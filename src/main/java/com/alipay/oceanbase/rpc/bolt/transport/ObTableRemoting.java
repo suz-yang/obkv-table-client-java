@@ -73,6 +73,7 @@ public class ObTableRemoting extends BaseRemoting {
 
         ObTablePacket obRequest = this.getCommandFactory().createRequestCommand(request);
 
+        logger.info("send msg {} to {}", obRequest.getId(), conn.getConnection());
         ObTablePacket response = (ObTablePacket) super.invokeSync(conn.getConnection(), obRequest,
             timeoutMillis);
 

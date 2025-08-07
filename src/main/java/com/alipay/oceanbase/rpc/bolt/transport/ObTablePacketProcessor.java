@@ -42,6 +42,7 @@ public class ObTablePacketProcessor implements RemotingProcessor<ObTablePacket> 
     public void process(RemotingContext ctx, ObTablePacket msg, ExecutorService defaultExecutor) {
 
         Connection conn = ctx.getChannelContext().channel().attr(Connection.CONNECTION).get();
+        logger.info("receive msg {} from {}", msg.getId(), conn);
         InvokeFuture future = conn.removeInvokeFuture(msg.getId());
         ClassLoader oldClassLoader = null;
         try {
